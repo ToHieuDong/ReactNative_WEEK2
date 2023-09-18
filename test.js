@@ -59,7 +59,7 @@
 
 // var url = "http://localhost:8080/api/v1/users";
 // // var url = 'https://my-json-server.typicode.com/typicode/demo/posts';
-var url = "https://jsonplaceholder.typicode.com/todos";
+var url = "https://jsonplaceholder.typicode.com/todos/1";
 var data = {};
 data.userId = 201;
 data.id = 201;
@@ -68,11 +68,11 @@ data.complete = false;
 
 var json = JSON.stringify(data);
 var xhr = new XMLHttpRequest();
-xhr.open("POST", url, true);
+xhr.open("GET", url, true);
 xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 xhr.onload = function() {
     var users = JSON.parse(xhr.responseText);
-    if (xhr.readyState == 4 && xhr.status == "201") {
+    if (xhr.readyState == 4 && xhr.status == "200") {
         console.table(users);
         console.log("error1");
     } else {
@@ -80,4 +80,5 @@ xhr.onload = function() {
         console.log("error2");
     }
 }
+xhr.send(null);
 console.log("test");
